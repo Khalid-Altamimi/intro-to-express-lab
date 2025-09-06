@@ -65,15 +65,16 @@ const type = req.query.type;
 let results = shoes;
 
 
-    if (!isNaN(minPrice)&& isNaN(maxPrice)){
+    if (minPrice && !isNaN(minPrice)){
         results = results.filter(shoe => shoe.price >= minPrice);
-    } else if (!isNaN(maxPrice)&& isNaN(minPrice)){
-        results = results.filter(shoe => shoe.price <= maxPrice);
-    }else if (!isNaN(minPrice)&& isNaN(maxPrice)){
+    } 
+        
+    if (!isNaN(maxPrice)&& maxPrice){
         results = results.filter(shoe => shoe.price <= maxPrice);
     }
 
- if (type){
+
+    if (type){
         results = results.filter(shoe => shoe.type.toLowerCase() === type.toLowerCase());
     }
 
